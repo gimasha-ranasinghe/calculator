@@ -3,10 +3,12 @@ package kaleniya_uni.V3;
 public class CommandLineInputs {
 
     private final String[] args;
-    public CommandLineInputs(String[] arguments){
+
+    public CommandLineInputs(String[] arguments) {
         this.args = arguments;
     }
-    public String getOperator(){
+
+    public String getOperator() {
         //Make sure to validate arguments before using...
         if (args.length == 0) {
             System.out.println("Please provide the operation as an argument");
