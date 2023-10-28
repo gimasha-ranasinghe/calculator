@@ -14,7 +14,11 @@ public class OperationFactory {
             operation = new Suboperation();
         } else if (operator.equals("mul")) {
             operation = new Muloperation();
-        }
+        }else if (operator.equals("div")) {
+            operation = new Divoperation();
+        }//violation of open close principle
+        //in factory pattern this is a known and fixable violation
+
 
         return operation;
     }

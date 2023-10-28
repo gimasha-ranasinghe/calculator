@@ -15,9 +15,10 @@ public class CommandLineInputs {
             return ""; //will change in future
         }
 
+        //violates open close principle here
         String operator = args[0];
-        if (!(operator.equals("add") || operator.equals("sub") || operator.equals("mul"))) {
-            System.out.println("Please provide add, sub or mul as operator argument");
+        if (!(operator.equals("add") || operator.equals("sub") || operator.equals("mul") || operator.equals("div"))) {
+            System.out.println("Please provide add, sub, mul or div as operator argument");
             return "";
         }
 
