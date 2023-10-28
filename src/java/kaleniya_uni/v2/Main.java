@@ -7,6 +7,8 @@ import java.util.List;
 //import static java.io.DeleteOnExitHook.files;
 
 public class Main {
+
+    //SINGLE RESPONSIBILITY PRINCIPLE - VIOLATED
     public static void main(String[] args) throws IOException {
 
         //Make sure to validate arguments before using...
