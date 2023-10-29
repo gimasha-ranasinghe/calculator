@@ -17,7 +17,7 @@ public class Main {
 
 
         Inputs inputs = new CommandLineInputs(args);
-        NumberRepository numberRepository = new SqlNumberRepository();
+        NumberRepository numberRepository = new FileNumberRepository();
         OperationFactory operationFactory = new OperationFactory(); //this one
         UI ui = new CmdLineUI();
         CalculatorApp calculatorApp = new CalculatorApp(inputs, numberRepository, operationFactory, ui);

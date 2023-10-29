@@ -2,6 +2,7 @@ package kaleniya_uni.v5;
 
 import kaleniya_uni.v5.UI.UI;
 import kaleniya_uni.v5.input.Inputs;
+import kaleniya_uni.v5.operation.InvalidOperationException;
 import kaleniya_uni.v5.operation.Operation;
 import kaleniya_uni.v5.operation.OperationFactory;
 import kaleniya_uni.v5.repository.NumberRepository;
@@ -27,7 +28,13 @@ public class CalculatorApp {
         String operator = inputs.getOperator();
         Double[] numbers = numberRepository.getNumbers();
         Operation operation = operationFactory.getInstance(operator);
-        Double result = operation.execute(numbers);
+        Double result = null;
+        try {
+            result = operation.execute(numbers);
+        } catch (InvalidOperationException e) {
+            ui.showMessage("Error occured."+e.getMessage());
+            return;
+        }
         ui.showMessage("The result is "+ result);
 
     }
