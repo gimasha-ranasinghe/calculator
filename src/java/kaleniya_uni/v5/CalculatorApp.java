@@ -7,8 +7,7 @@ import kaleniya_uni.v5.operation.InvalidOperationException;
 import kaleniya_uni.v5.operation.Operation;
 import kaleniya_uni.v5.operation.OperationFactory;
 import kaleniya_uni.v5.repository.NumberRepository;
-
-import java.io.IOException;
+import kaleniya_uni.v5.repository.NumberRepositoryException;
 
 public class CalculatorApp {
 
@@ -25,26 +24,16 @@ public class CalculatorApp {
         this.ui = ui;
     }
 
-    public void execute() throws IOException { // will change exception part
-        String operator = null;
+    public void execute() { // will change exception part
         try {
-            operator = inputs.getOperator();
-        } catch (InvalidInputException e) {
-            ui.showMessage("Error occured."+e.getMessage());
+            String operator = inputs.getOperator();
+            Double[] numbers = numberRepository.getNumbers();
+            Operation operation = operationFactory.getInstance(operator);
+            Double result = operation.execute(numbers);
+            ui.showMessage("The result is " + result);
+        } catch (InvalidInputException | NumberRepositoryException | InvalidOperationException e) {
+            ui.showMessage("Error occured." + e.getMessage());
             return;
         }
-
-        Double[] numbers = numberRepository.getNumbers();
-        Operation operation = operationFactory.getInstance(operator);
-
-        Double result;
-        try {
-            result = operation.execute(numbers);
-        } catch (InvalidOperationException e) {
-            ui.showMessage("Error occured."+e.getMessage());
-            return;
-        }
-        ui.showMessage("The result is "+ result);
-
     }
 }

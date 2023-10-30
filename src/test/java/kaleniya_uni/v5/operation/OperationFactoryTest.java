@@ -27,7 +27,7 @@ public class OperationFactoryTest {
     @Test
     public void should_return_Muloperation_object_when_operator_is_mul(){
         OperationFactory operationFactory = new OperationFactory();
-        Operation operation = operationFactory.getInstance("add");
+        Operation operation = operationFactory.getInstance("mul");
 
         assertThat(operation, instanceOf(Muloperation.class));
     }
